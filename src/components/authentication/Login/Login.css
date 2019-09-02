@@ -1,0 +1,13 @@
+.login-page {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+.login-panel {
+  width: 500px;
+}
+.link-forgot-password a { text-decoration: underline; }
+.link-forgot-password a:hover { text-decoration: none; }
+.link-forgot-password a:active { text-decoration: underline; }
+.link-forgot-password a:visited {}

@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
 
 import './Home.css'
 
@@ -15,9 +16,12 @@ const styles = theme => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 500,
+  },
+  list: {
+    paddingTop: 0,
+    paddingBottom: 0,
   },
 })
 
@@ -31,14 +35,20 @@ ListItemLink.propTypes = {
   primary: PropTypes.node.isRequired,
   secondary: PropTypes.node,
   to: PropTypes.string.isRequired,
-};
+}
 
 const Home = ({ classes }) => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <List component="nav">
-          <ListItemLink to="/registration" primary="Registration form" secondary="A description about registration form" />
+        <List component="nav" className={classes.list}>
+          <ListItemLink
+            to="/login"
+            primary="Authentication flow"
+            secondary="Starting with a login form, a prototype UI for a website's authentication flow. Includes, login, registration and forgot password forms."
+          />
+          <Divider light />
+          <ListItemLink to="/somewhere" primary="Second example" secondary="Some description text here of the second form example." />
         </List>
       </Paper>
     </div>
