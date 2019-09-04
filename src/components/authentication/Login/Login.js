@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -10,6 +10,7 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
+import Divider from '../../Divider/Divider'
 
 import './Login.css'
 
@@ -28,12 +29,16 @@ const styles = theme => ({
   linkForgotPassword: {
     color: theme.palette.primary.main,
   },
+  leftIcon: {
+    marginRight: theme.spacing.unit,
+  },
 })
 
 const Login = ({ classes }) => {
   const [fieldEmail, setEmail] = useState('')
   const [fieldPassword, setPassword] = useState('')
   const [fieldSaveLogin, setSaveLogin] = useState(false)
+  const [redirectRegistration, setRedirectRegistration] = useState(false)
 
   const handleChangeEmail = event => {
     setEmail(event.target.value)
@@ -45,6 +50,15 @@ const Login = ({ classes }) => {
 
   const handleChangeSaveLogin = event => {
     setSaveLogin(event.target.checked)
+  }
+
+  const handleClickJoin = e => {
+    e.preventDefault()
+    setRedirectRegistration(true)
+  }
+
+  if (redirectRegistration) {
+    return <Redirect to="/registration" />
   }
 
   return (
@@ -88,8 +102,27 @@ const Login = ({ classes }) => {
                 </Link>
               </span>
             </FormGroup>
-            <Button variant="contained" color="primary" fullWidth size="large">
+            <Button variant="contained" color="primary" fullWidth size="large" type="submit">
               Login
+            </Button>
+            <div className="divider-container">
+              <Divider label="or continue with" />
+            </div>
+            <div className="form-row-split">
+              <Button variant="outlined" size="large" className={classes.margin} fullWidth>
+                <img src={process.env.PUBLIC_URL + 'facebook-logo.svg'} alt="Facebook logo" className="icon icon--facebook" />
+                Facebook
+              </Button>
+              <Button variant="outlined" size="large" className={classes.margin} fullWidth>
+                <img src={process.env.PUBLIC_URL + 'google-logo.svg'} alt="Google logo" className="icon icon--google" />
+                Google
+              </Button>
+            </div>
+            <div className="divider-container">
+              <Divider label="don't have an account?" />
+            </div>
+            <Button variant="contained" color="secondary" fullWidth size="large" type="button" onClick={handleClickJoin}>
+              Create account
             </Button>
           </form>
         </Paper>
