@@ -81,8 +81,7 @@ const Login = ({ classes }) => {
                 resetForm()
                 setSubmitting(false)
               }, 500)
-            }}
-            validateOnChange={false}>
+            }}>
             {({ values, errors, touched, handleChange, handleSubmit, isSubmitting }) => (
               <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
@@ -96,8 +95,8 @@ const Login = ({ classes }) => {
                   name="email"
                   onChange={handleChange}
                   value={values.email}
-                  helperText={errors.email}
-                  error={errors.email ? true : false}
+                  helperText={touched.email ? errors.email : ''}
+                  error={errors.email && touched.email ? true : false}
                 />
                 <TextField
                   id="password"
@@ -111,8 +110,8 @@ const Login = ({ classes }) => {
                   name="password"
                   onChange={handleChange}
                   value={values.password}
-                  helperText={errors.password}
-                  error={errors.password ? true : false}
+                  helperText={touched.password ? errors.password : ''}
+                  error={errors.password && touched.password ? true : false}
                 />
                 <FormGroup row className={classes.rememberRow}>
                   <FormControlLabel
