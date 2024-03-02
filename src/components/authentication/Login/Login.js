@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link, Redirect } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
@@ -48,7 +47,6 @@ const validationSchema = Yup.object().shape({
 
 const Login = ({ classes }) => {
   const [fieldSaveLogin, setSaveLogin] = useState(false)
-  const [redirectRegistration, setRedirectRegistration] = useState(false)
 
   const handleChangeSaveLogin = event => {
     setSaveLogin(event.target.checked)
@@ -56,11 +54,7 @@ const Login = ({ classes }) => {
 
   const handleClickJoin = e => {
     e.preventDefault()
-    setRedirectRegistration(true)
-  }
-
-  if (redirectRegistration) {
-    return <Redirect to="/registration" />
+    console.log('Redirect would happen here')
   }
 
   return (
@@ -122,9 +116,9 @@ const Login = ({ classes }) => {
                     }}
                   />
                   <span className="link-forgot-password">
-                    <Link to="/forgot-password" className={classes.linkForgotPassword}>
+                    <a href="#" className={classes.linkForgotPassword}>
                       Forgot your password?
-                    </Link>
+                    </a>
                   </span>
                 </FormGroup>
                 <Button variant="contained" color="primary" fullWidth size="large" type="submit" disabled={isSubmitting}>

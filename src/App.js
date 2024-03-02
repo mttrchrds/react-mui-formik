@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -44,16 +43,13 @@ const App = props => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              React Material UI with Formik examples
+              Example React, Material UI and Formik login page
             </Typography>
           </Toolbar>
         </AppBar>
       </div>
       <div className={classes.content}>
-        <Router>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-        </Router>
+        <Login />
       </div>
     </div>
   )
