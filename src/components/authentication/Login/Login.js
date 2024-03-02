@@ -129,11 +129,11 @@ const Login = ({ classes }) => {
                 </div>
                 <div className="form-row-split">
                   <Button variant="outlined" size="large" className={classes.margin} fullWidth>
-                    <img src={process.env.PUBLIC_URL + 'facebook-logo.svg'} alt="Facebook logo" className="icon icon--facebook" />
+                    <img src={process.env.PUBLIC_URL + '/facebook-logo.svg'} alt="Facebook logo" className="icon icon--facebook" />
                     Facebook
                   </Button>
                   <Button variant="outlined" size="large" className={classes.margin} fullWidth>
-                    <img src={process.env.PUBLIC_URL + 'google-logo.svg'} alt="Google logo" className="icon icon--google" />
+                    <img src={process.env.PUBLIC_URL + '/google-logo.svg'} alt="Google logo" className="icon icon--google" />
                     Google
                   </Button>
                 </div>
